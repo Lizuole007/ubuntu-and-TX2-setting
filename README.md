@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TX2_jetpack 系统环境配置
 
 一、#/*TX2升级cmake*/
@@ -116,3 +117,6 @@ source /etc/bash.bashrc
 在命令行中输入如下命令：pkg-config opencv --modversion
 
 三、TX2+jetpack4.3源码编译tkDNN
+=======
+# TX2_jetpack
+>>>>>>> 12218028b8c59288552cac81840c73dd78d9d3c6
