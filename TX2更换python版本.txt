@@ -1,3 +1,5 @@
+https://forums.developer.nvidia.com/t/pytorch-for-jetson-nano-version-1-5-0-now-available/72048
+
 1 修改python版本
 给Jetson TX2刷机之后，运行python默认是python2，而我们用python3多一些，因此用以下方法更改一下
 首先运行以下代码
