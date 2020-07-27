@@ -1,0 +1,11 @@
+1 修改python版本
+给Jetson TX2刷机之后，运行python默认是python2，而我们用python3多一些，因此用以下方法更改一下
+首先运行以下代码
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 100
+ sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 150
+把两个版本的python加入到alternatives列表中，然后运行以下代码配置
+sudo update-alternatives --config python
+根据提示来选择要使用的版本，选择后退出，运行python即可看到默认python版本发生变化
+
+python -m ensurepip
+python -m pip install --upgrade pip
