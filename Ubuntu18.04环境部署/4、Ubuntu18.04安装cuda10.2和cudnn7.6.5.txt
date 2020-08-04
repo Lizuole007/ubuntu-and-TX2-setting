@@ -1,0 +1,35 @@
+# @文件  : Ubuntu18.04安装ssh服务.txt
+# @作者  : Michael Cong
+# @日期  : 2020/08/04
+# @邮箱  : rencong_jx@163.com
+# @参考链接：https://www.cnblogs.com/codeit/p/13391069.html
+
+一、CUDA10.2安装
+    进入官网下载CUDA10.2：https://developer.nvidia.com/cuda-toolkit-archive
+    按照流程依次选择应用平台信息，我的下载如下：
+    wget http://developer.download.nvidia.com/compute/cuda/10.2/Prod/local_installers/cuda_10.2.89_440.33.01_linux.run
+    sudo sh cuda_10.2.89_440.33.01_linux.run
+    安装过程中取消显卡驱动安装即可。
+
+    设置环境变量
+    sudo vim ~/.bashrc
+    export PATH=/usr/local/cuda-10.2/bin${PATH:+:${PATH}}
+    export LD_LIBRARY_PATH=/usr/local/cuda-10.2/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+    使环境变量生效
+    source ~/.bashrc
+    执行：
+    nvcc -V
+
+二、安装CUDNN7.6.5
+    进入官网下载：https://developer.nvidia.com/rdp/cudnn-download
+    注册账号并登陆（没有账号可以邮箱联系我），选择“Download cuDNN v7.6.5 (November 18th, 2019), for CUDA 10.2”
+    然后下载“cuDNN Library for Linux”，下载完成后解压tgz文件，得到一个cuda文件夹：
+    tar -xzvf cudnn-10.2-linux-x64-v7.6.5.32.tgz
+    然后复制文件：
+    sudo cp cuda/include/cudnn.h    /usr/local/cuda-10.2/include 
+    sudo cp cuda/lib64/libcudnn*    /usr/local/cuda-10.2/lib64
+    sudo chmod a+r /usr/local/cuda/include/cudnn.h   /usr/local/cuda/lib64/libcudnn*
+    验证安装结果：1
+    cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
+
+至此，已安装完成，此过程10分钟能解决。
