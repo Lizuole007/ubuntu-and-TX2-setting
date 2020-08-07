@@ -11,7 +11,7 @@ sudo apt-get install python3-setuptools
 #Installing PyTorch
 #For latest PyTorch refer original Nvidia Jetson Nano thread - https://devtalk.nvidia.com/default/topic/1049071/jetson-nano/pytorch-for-jetson-nano/.
 #一般需要翻墙下载，可以提前下载好，放到同目录下，注释这行代码
-wget https://nvidia.box.com/shared/static/ncgzus5o23uck9i5oth2n8n06k340l6k.whl -O torch-1.4.0-cp36-cp36m-linux_aarch64.whl
+# wget https://nvidia.box.com/shared/static/ncgzus5o23uck9i5oth2n8n06k340l6k.whl -O torch-1.4.0-cp36-cp36m-linux_aarch64.whl
 sudo apt-get install python3-pip libopenblas-base
 sudo pip3 install Cython
 sudo pip3 install numpy torch-1.4.0-cp36-cp36m-linux_aarch64.whl

@@ -1,4 +1,4 @@
-二、TX2+jetpack4.3源码编译opencv3.4.10+contrib3.4.10
+二、TX2+jetpack4.4源码编译opencv3.4.10+contrib3.4.10
 （1）安装依赖环境
 sudo apt-get purge libopencv*
 sudo apt-get purge python-numpy
@@ -60,7 +60,7 @@ cmake \
     -DWITH_TBB=ON \  
     -DWITH_1394=OFF \  
     -DWITH_OPENEXR=OFF \  
-    -DCUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda-10.0 \  
+    -DCUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda-10.2 \  
     -DCUDA_ARCH_BIN="6.2" \  
     -DOPENCV_EXTRA_MODULES_PATH = /home/nvidia/OpenCV3.4.10/opencv_contrib-3.4.10/modules \
     -DCUDA_ARCH_PTX="" \  
