@@ -4,3 +4,5 @@
 # @邮箱  : rencong_jx@163.com
 
 咱不更新，有问题联系邮箱，后期开源tx2镜像文件。
+
+https://blog.csdn.net/Collin_D/article/details/106631411

@@ -1,4 +1,7 @@
 参考installtorch.sh 进行安装
+参考：https://github.com/riskybacon/tx2-pytorch-wheelbuilder/tree/master/scripts
+https://github.com/andrewadare/jetson-tx2-pytorch
+https://forums.developer.nvidia.com/t/pytorch-for-jetson-nano-version-1-6-0-now-available/72048
 whl需要翻墙下载，需要的联系邮箱，我发给您，麻烦star一下。
 installi.sh
 #!/bin/bash
