@@ -1,3 +1,8 @@
+# @文件  : 4TX2安装cmake.txt
+# @作者  : Michael Cong
+# @日期  : 2020/08/08
+# @邮箱  : rencong_jx@163.com
+
 一、#/*TX2升级cmake*/
 我的应用场景要编译TensorRT进行目标检测，yolo-darknet/tkCUDNN，需要最低cmake版本为3.15,而Jetpack 4.3刷机后自带的为3.12.
 使用以下两条命令都是失败的

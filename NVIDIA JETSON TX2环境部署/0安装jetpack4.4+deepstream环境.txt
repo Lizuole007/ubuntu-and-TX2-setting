@@ -1,0 +1,6 @@
+# @文件  : 0安装jetpack4.4+deepstream环境.txt
+# @作者  : Michael Cong
+# @日期  : 2020/08/08
+# @邮箱  : rencong_jx@163.com
+
+咱不更新，有问题联系邮箱，后期开源tx2镜像文件。

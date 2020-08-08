@@ -1,3 +1,8 @@
+# @文件  : 5TX2源码编译scikit-image.txt
+# @作者  : Michael Cong
+# @日期  : 2020/08/08
+# @邮箱  : rencong_jx@163.com
+
 二、TX2+jetpack4.4源码编译opencv3.4.10+contrib3.4.10
 （1）安装依赖环境
 sudo apt-get purge libopencv*

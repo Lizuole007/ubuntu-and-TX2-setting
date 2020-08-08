@@ -1,14 +1,13 @@
-# @文件  : win10和Ubuntu 18.04双系统安装避坑指南.txt
+# @文件  : 3安装搜狗输入法.txt
 # @作者  : Michael Cong
 # @日期  : 2020/08/07
 # @邮箱  : rencong_jx@163.com
 
-硬件平台： NVIDIA Jetson TX2
-系统平台： Ubuntu18.04 LTS
-
 搜狗输入法：
 1，搜狗官网下载搜狗输入法
 http://pinyin.sogou.com/linux/
+
+安装方式：sudo dpkg -i XXX.deb
 
 谷歌拼音输入法
 1,通过指令：

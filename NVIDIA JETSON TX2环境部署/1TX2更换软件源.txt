@@ -1,4 +1,11 @@
+# @文件  : 1TX2更换软件源.txt
+# @作者  : Michael Cong
+# @日期  : 2020/08/08
+# @邮箱  : rencong_jx@163.com
+
 Jetson TX2更换软件源
+
+方法一：
 TX2的软件源为国外服务器，网速会很慢，需要换国内的ARM源。
 备份/etc/lib路径下的source.list文件，然后在终端（按ctrl+alt+T打开）执行以下命令：
 sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak    #为防止误操作后无法恢复，先备份原文件sources.list
@@ -24,3 +31,15 @@ deb http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial main universe restricted
 deb-src http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial main universe restricted
 替换之后，执行
 sudo apt-get update
+
+方法二：
+目前使用成功的源：建议使用。
+# 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ bionic main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ bionic main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ bionic-updates main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ bionic-updates main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ bionic-backports main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ bionic-backports main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ bionic-security main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ bionic-security main restricted universe multiverse

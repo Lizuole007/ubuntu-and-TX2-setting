@@ -1,4 +1,0 @@
-参考installtorch.sh
-from torch._C import * import torch No module named 'numpy.core._multiarray_
-
-升级pip ,numpy至最新
