@@ -15,7 +15,8 @@ sudo apt-get purge libopencv*
 sudo apt-get purge python-numpy
 sudo apt autoremove
 sudo apt-get update
-sudo apt-get dist-upgrade
+##sudo apt-get dist-upgrade####
+sudo apt-get upgrade
 sudo apt-get install --only-upgrade g++-5 cpp-5 gcc-5
 sudo apt-get install build-essential make cmake cmake-curses-gui \
                    g++ libavformat-dev libavutil-dev \
