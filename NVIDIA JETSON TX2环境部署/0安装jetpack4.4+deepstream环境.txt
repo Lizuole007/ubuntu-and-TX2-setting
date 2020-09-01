@@ -1,8 +1,55 @@
-# @文件  : 0安装jetpack4.4+deepstream环境.txt
+# @文件  : 0安装jetpack4.3+deepstream环境.txt
 # @作者  : Michael Cong
-# @日期  : 2020/08/08
+# @日期  : 2020/08/31
 # @邮箱  : rencong_jx@163.com
 
-咱不更新，有问题联系邮箱，后期开源tx2镜像文件。
+咱不更新，有问题联系邮箱，后期开源tx2镜像文件。https://blog.csdn.net/Collin_D/article/details/106631411
 
-https://blog.csdn.net/Collin_D/article/details/106631411
+一、TX2版本信息
+查看Jetson TX2 L4T版本：head -n 1 /etc/nv_tegra_release
+查看TensorRT的版本：dpkg -l | grep TensorRT
+查看系统版本：cat /etc/lsb-release
+查看系统内核：uname -a
+查看内存：free -m
+查看CPU详情：lscpu
+查看硬盘分区：sudo parted -l
+查看硬盘空间：df -h
+查看正在运行的进程：top
+查看USB设备：lsusb
+开启风扇最大功耗模式：sudo ./jetson_clocks.sh(或jetson_clocks)（不同L4T版本对应的文件位置不同。/usr/bin/）
+查询当前工作模式：sudo nvpmodel -q verbose
+修改工作模式为0：sudo nvpmodel -m 0
+TX2上查看cuda版本：nvcc -V或cat /usr/local/cuda/version.txt
+TX2上查看cudnn版本：cat /usr/include/cudnn.h | grep CUDNN_MAJOR -A 2，在jetpack4.4中采用：dpkg -l libcudnn8
+TX2上查看opencv版本：pkg-config --modversion opencv  或  dpkg -l libopencv
+查看python版本：
+方法一： 
+python -V 注意：‘-V‘中‘V’为大写字母，只有一个‘-’ 
+方法二： 
+python –version 注意：‘–version’中有两个‘-’
+查看python安装位置 
+方法一：　 
+python -c “import sys; print sys.executable” 
+方法二： 
+python -c “import os; print os.sys.executable” 
+python -c “import os; path = os.sys.executable;folder=path[0 : path.rfind(os.sep)]; print folder”
+查看Numpy版本 
+python -c “import numpy; print numpy.version.version” 
+或 
+python -c “import numpy; print numpy.version”
+查看Numpy安装路径 
+python -c “import numpy; print numpy.file”
+查看SciPy版本 
+python -c “import scipy; print scipy.version.version” 
+或 
+python -c “import scipy; print scipy.version”
+查看SciPy安装路径 
+python -c “import scipy; print scipy.file”
+查看Matplotlib版本 
+python -c “import matplotlib; print matplotlib.version.version” 
+或 
+python -c “import matplotlib; print matplotlib.version”
+查看Matplotlib安装路径 
+python -c “import matplotlib; print matplotlib.file”
+
+二、
