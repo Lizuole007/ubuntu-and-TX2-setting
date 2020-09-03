@@ -1,73 +1,71 @@
-参考installtorch.sh 进行安装
+# @文件  : Jetson TX2安装pytorch 1.4 (jetpack4.3)详细教程.txt
+# @作者  : Michael Cong
+# @日期  : 2020/09/03
+# @邮箱  : rencong_jx@163.com
+
+Jetson TX2安装pytorch 1.4 (jetpack4.3)详细教程
 参考：https://github.com/riskybacon/tx2-pytorch-wheelbuilder/tree/master/scripts
 https://github.com/andrewadare/jetson-tx2-pytorch
 https://forums.developer.nvidia.com/t/pytorch-for-jetson-nano-version-1-6-0-now-available/72048
 whl需要翻墙下载，需要的联系邮箱，我发给您，麻烦star一下。
-installi.sh
-#!/bin/bash
 
-# This script will install pytorch, torchvision, torchtext and spacy on nano. 
-# If you have any of these installed already on your machine, you can skip those.
+1、TX2 更改python默认版本为python 3
+TX2 刷完jetpack4.3固件后安装的ubuntu系统同时存在两个版本的python，一个是默认的python2.7,另一个是python3.6版本，我一般习惯使用python3,所以通过以下命令进行设置。
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 100
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 150
+#在弹出的列表中进python默认版本的选择
+sudo update-alternatives --config python
+执行下面命令安装pip3
+sudo apt-get install python3-pip
+#更新版本
+pip3 install --upgrade pip
 
+2、安装pytorch
+2.1 Jetson TX2必要依赖安装
+为了能在TX2上顺利的进行一系列的软件安装工作，我建议在TX2刷机完毕后可以安装以下依赖，这样可以避免后续安装pytrorch等第三方库出现不必要的错误
 sudo apt-get -y update
 sudo apt-get -y upgrade
 #Dependencies
-sudo apt-get install python3-setuptools
-
-#Installing PyTorch
-#For latest PyTorch refer original Nvidia Jetson Nano thread - https://devtalk.nvidia.com/default/topic/1049071/jetson-nano/pytorch-for-jetson-nano/.
-#一般需要翻墙下载，可以提前下载好，放到同目录下，注释这行代码
-# wget https://nvidia.box.com/shared/static/ncgzus5o23uck9i5oth2n8n06k340l6k.whl -O torch-1.4.0-cp36-cp36m-linux_aarch64.whl
-sudo apt-get install python3-pip libopenblas-base
-sudo pip3 install Cython
-sudo pip3 install numpy torch-1.4.0-cp36-cp36m-linux_aarch64.whl
-
-#Installing torchvision
-#For latest torchvision refer original Nvidia Jetson Nano thread - https://devtalk.nvidia.com/default/topic/1049071/jetson-nano/pytorch-for-jetson-nano/.
+sudo apt-get install -y nano curl 
+sudo apt-get install -y python3-pip python3-dev
+sudo apt-get install -y python-pip
+sudo apt-get install -y python-setuptools
+sudo apt-get install -y python3-setuptools
+sudo apt-get install -y python3-opencv
+sudo apt-get install -y libcanberra-gtk0 libcanberra-gtk-module
+针对Python-pip
+pip3 install -U pip
+pip install -U pip
+pip3 install setuptools wheel
+pip install setuptools wheel cython
+2.2 Pytorch安装
+TX2安装Pytorch最简单的方法就是下载nvidia官网提供的对应版本的pytorch的whl文件和教程进行安装，nvidia官方pythorch下载地址。
+本次选择的是安装的python 3.6版本的pytorch1.4.0版本。
+安装的方式有很多种：
+第一种方法：通过wget下载whl文件有时会比较慢甚至下载失败，我是在windows环境下用利用科学上网下载，速度会比较快，下载好后将文件放在home目录下然后执行后面3步。
+wget https://nvidia.box.com/shared/static/c3d7vm4gcs9m728j6o5vjay2jdedqb55.whl -O torch-1.4.0-cp36-cp36m-linux_aarch64.whl
+sudo apt-get install python3-pip libopenblas-base libopenmpi-dev 
+pip3 install Cython
+pip3 install numpy torch-1.4.0-cp36-cp36m-linux_aarch64.whl
+第二种方法：没有亲自试过，主要通过pip换清华源的方式下载安装，个人觉得不要使用豆瓣等源因为他们不一定包含TX2 ARM的安装包，可以自己尝试一下，下载速度应该也比较快。
+pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple numpy torch-1.4.0-cp36-cp36m-linux_aarch64.whl
+安装完成后可以在python环境下通过import torch进行验证，可能会报错如下
+我的是应为numpy版本的问题，通过以下命令行将其版本更新至1.19.1即可解决问题。
+pip3 install --upgrade numpy
+2.3 安装Torchvision v0.5.0 
+通过以下命令即可完成安装
 sudo apt-get install libjpeg-dev zlib1g-dev
-git clone --branch v0.5.0 https://github.com/pytorch/vision torchvision   # see below for version of torchvision to download
+#实测用手机热点下载会比较顺利
+git clone --branch v0.5.0 https://github.com/pytorch/vision torchvision
 cd torchvision
-sudo python setup.py install
-cd ../  # attempting to load torchvision from build dir will result in import error
-
-#Installing spaCy
-#Installing dependency sentencepiece
-sudo apt-get install cmake build-essential pkg-config libgoogle-perftools-dev
-git clone https://github.com/google/sentencepiece.git
-cd sentencepiece
-mkdir build
-cd build
-cmake ..
-make -j $(nproc)
-sudo make install
-sudo ldconfig -v
-cd python
-python3 setup.py build
-sudo python3 setup.py install
-cd ../../
-
-git clone https://github.com/explosion/spaCy
-cd spaCy/
-export PYTHONPATH=`pwd`
-export BLIS_ARCH=generic
-sudo pip3 install -r requirements.txt
-sudo python3 setup.py build_ext --inplace
-sudo python3 setup.py install
-python3 -m spacy download en_core_web_sm
-cd ../
-
-#Installing torchtext
-git clone https://github.com/pytorch/text.git
-cd text
-sudo pip3 install -r requirements.txt
+#这一步花费的时间较长
 sudo python3 setup.py install
 cd ../
-
-echo "done installing PyTorch, torchvision, spaCy, torchtext"
-
-安装完报错：
+pip3 install 'pillow<7' # not needed for torchvision v0.5.0+
+进行到sudo python3 setup.py install这一步时，报错如下：
 from torch._C import * import torch No module named 'numpy.core._multiarray_
-升级pip ,numpy至最新
-
-验证代码：
-https://github.com/MichaelCong/yolov5
+应该是安装pillow的过程失败了。通过下面的语句可实现加速安装pillow，便可解决问题，然后接着执行后面的语句。
+pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple pillow==4.1.1
+2.4 安装验证
+通过一下命令进行安装验证
+python3 -c "import torch ; print(torch.__version__)"

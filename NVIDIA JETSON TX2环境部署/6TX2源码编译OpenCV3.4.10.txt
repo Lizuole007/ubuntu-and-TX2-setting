@@ -3,13 +3,19 @@
 # @日期  : 2020/08/08
 # @邮箱  : rencong_jx@163.com
 
+一、快速安装opencv
+    如果对opencv功能h和版本需求不大的话，可以直接安装Python和C++的版本
+   sudo apt-get install python-opencv
+   sudo apt-get install libopencv-dev
+   安装完成可以直接使用，但在C++编译时候可能会出现找不到动态库，此时需要配置opencv动态库。
+
 二、TX2+jetpack4.4源码编译opencv3.4.10+contrib3.4.10
 （1）安装依赖环境
 sudo apt-get purge libopencv*
 sudo apt-get purge python-numpy
 sudo apt autoremove
 sudo apt-get update
-sudo apt-get dist-upgrade
+sudo apt-get upgrade
 sudo apt-get install --only-upgrade g++-5 cpp-5 gcc-5
 sudo apt-get install build-essential make cmake cmake-curses-gui \
                    g++ libavformat-dev libavutil-dev \
@@ -65,9 +71,9 @@ cmake \
     -DWITH_TBB=ON \  
     -DWITH_1394=OFF \  
     -DWITH_OPENEXR=OFF \  
-    -DCUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda-10.2 \  
+    -DCUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda-10.0 \  
     -DCUDA_ARCH_BIN="6.2" \  
-    -DOPENCV_EXTRA_MODULES_PATH = /home/nvidia/OpenCV3.4.10/opencv_contrib-3.4.10/modules \
+    -DOPENCV_EXTRA_MODULES_PATH = /home/nvidia/OpenCV-4.3.0/opencv_contrib-4.3.0/modules \
     -DCUDA_ARCH_PTX="" \  
     -DINSTALL_C_EXAMPLES=ON \  
     -DINSTALL_TESTS=OFF \  

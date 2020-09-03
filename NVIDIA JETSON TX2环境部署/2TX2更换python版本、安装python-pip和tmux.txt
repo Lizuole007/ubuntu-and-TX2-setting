@@ -24,7 +24,7 @@ sudo python -m pip install --upgrade pip
 # python -m pip install --upgrade pip
 
 3 开启最大功耗模式
-sudo nvpmodel -q
+sudo nvpmodel -q verbose
 sudo nvpmodel -m 0 
 
 4 安装tmux工具

@@ -3,7 +3,7 @@
 # @日期  : 2020/08/08
 # @邮箱  : rencong_jx@163.com
 
-Jetson TX2更换软件源
+Jetson TX2更换软件源，建议使用方法二。
 
 方法一：
 TX2的软件源为国外服务器，网速会很慢，需要换国内的ARM源。
@@ -43,3 +43,10 @@ deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ bionic-backports main res
 # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ bionic-backports main restricted universe multiverse
 deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ bionic-security main restricted universe multiverse
 # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ bionic-security main restricted universe multiverse
+
+主要是两个点：
+ubuntu-ports: Arm架构适用
+bionic: ubuntu18.04
+
+sudo apt-get update
+sudo apt-get upgrade
