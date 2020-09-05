@@ -1,0 +1,4 @@
+# @文件  : darknet模型训练.txt
+# @作者  : Michael Cong
+# @日期  : 2020/08/08
+# @邮箱  : rencong_jx@163.com

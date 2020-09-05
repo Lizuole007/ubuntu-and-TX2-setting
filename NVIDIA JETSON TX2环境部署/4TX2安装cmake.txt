@@ -14,6 +14,7 @@ sudo apt remove cmake
 sudo apt purge --auto-remove cmake
 
 2. 从官网下载所需版本，解压，创建build文件夹
+sudo apt-get install libssl-dev
 sudo apt-get install build-essential
 $ weget https://cmake.org/files/v3.18/cmake-3.18.0.tar.gz
 $ tar xf cmake-3.18.30.tar.gz
