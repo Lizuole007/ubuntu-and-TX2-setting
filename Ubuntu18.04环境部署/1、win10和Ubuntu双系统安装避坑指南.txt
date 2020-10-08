@@ -90,3 +90,19 @@ requirements : windows10 已成功安装，磁盘空间足够，此教程仅限�
 
 此时，再回到diskpart删除刚刚分配的盘符P，输入【remove letter = p】即可，如下图：
 
+
+
+3. U盘重装ubuntu系统（适用于完全重装）
+参考：https://www.cnblogs.com/mrluve/p/12189738.html
+3.1 U盘刻录系统
+3.2 开机安F2，进入bios模式，选择U盘启动
+3.3 选择Install Ubuntu，选择语言，选择安装第三方软件
+3.4 选择Erase disk and install Ubuntu和Use LVM with the new Ubunut installation自动安装（自动分区，避免自己分区错误带来麻烦）
+3.5 安装，重启
+3.6 安装nvidia显卡或cuda，重启后会出现 PCI bus error问题，解决方法：重启前进行修改
+    1. sudo cp /etc/default/grub /etc/default/grub.bak
+    2. sudo -H gedit /etc/default/grub
+    3. 修改GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"为GRUB_CMDLINE_LINUX_DEFAULT="quiet splash pci=nomsi"
+    4. sudo update-grub
+    5. sudo reboot
+
